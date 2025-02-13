@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Cube with Mirror Effect and Moving Sparkling Edges</title>
+    <title>Creative 3D Cube Animation</title>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #111;
+            background-color: #000;
             margin: 0;
             overflow: hidden;
         }
@@ -19,23 +19,6 @@
             width: 200px;
             height: 200px;
             perspective: 1000px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mirror {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(0,0,0,0.8));
-            transform-style: preserve-3d;
-            pointer-events: none;
-            z-index: 0;
-            transform: rotateX(30deg) rotateY(30deg);
-            filter: blur(2px);
-            animation: edgeMove 5s infinite linear;
         }
 
         .cube {
@@ -43,8 +26,7 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            z-index: 2;
-            animation: rotateCube 10s infinite linear;
+            animation: rotateCube 15s infinite linear;
         }
 
         .face {
@@ -54,35 +36,29 @@
             background-size: cover;
             background-position: center;
             border: 2px solid #fff;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-            animation: sparkle 2s infinite alternate;
+            animation: jointEffect 4s infinite linear;
         }
 
-        .front  { transform: translateZ(100px); background-image: url('/images/photo1.avif'); }
-        .back   { transform: rotateY(180deg) translateZ(100px); background-image: url('/images/photo2.avif'); }
-        .left   { transform: rotateY(-90deg) translateZ(100px); background-image: url('/images/photo3.avif'); }
-        .right  { transform: rotateY(90deg) translateZ(100px); background-image: url('/images/photo4.avif'); }
-        .top    { transform: rotateX(90deg) translateZ(100px); background-image: url('/images/photo5.avif'); }
-        .bottom { transform: rotateX(-90deg) translateZ(100px); background-image: url('/images/photo6.avif'); }
+        .front  { transform: translateZ(100px); background-image: url('/images/photo1.jpg'); }
+        .back   { transform: rotateY(180deg) translateZ(100px); background-image: url('/images/photo2.jpg'); }
+        .left   { transform: rotateY(-90deg) translateZ(100px); background-image: url('/images/photo3.jpg'); }
+        .right  { transform: rotateY(90deg) translateZ(100px); background-image: url('/images/photo4.jpg'); }
+        .top    { transform: rotateX(90deg) translateZ(100px); background-image: url('/images/photo5.jpg'); }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); background-image: url('/images/photo6.jpg'); }
 
         @keyframes rotateCube {
             from { transform: rotateX(0deg) rotateY(0deg); }
             to { transform: rotateX(360deg) rotateY(360deg); }
         }
 
-        @keyframes sparkle {
-            0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-            100% { box-shadow: 0 0 30px rgba(255, 255, 255, 1); }
-        }
-
-        @keyframes edgeMove {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
+        @keyframes jointEffect {
+            0% { border-color: rgba(255, 255, 255, 0.2); }
+            50% { border-color: rgb(247, 247, 245); box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+            100% { border-color: rgba(255, 255, 255, 0.2); }
         }
     </style>
 </head>
 <body>
-    <!-- <div class="mirror"></div> -->
     <div class="scene">
         <div class="cube">
             <div class="face front"></div>
